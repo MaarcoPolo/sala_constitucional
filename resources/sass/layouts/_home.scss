@@ -1,0 +1,763 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.main-head {
+    grid-area: header;
+}
+
+.content {
+    grid-area: content;
+
+    border-left: .2rem solid v.$gris_g7;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-image: url(../../public/img/background-pleca-izquierda.jpg);
+    background-size: cover;
+    background-position: center center;
+    border-right: .1rem solid v.$gris_g7;
+    padding-top: 0;
+    
+    @include m.tablet {
+        padding-top: 4rem;
+        
+    }
+}
+// @media only screen and (max-width: 425px) {
+//     .sidebar {
+//      align-content:left;
+//     grid-area: sidebar;
+//     background-image: url(../../public/img/background-pleca-izquierda.jpg);
+//     background-size: cover;
+//     background-position: center center;
+//     border-right: .1rem solid v.$gris_g7;
+//     padding-top: 0;
+    
+        
+//     }
+// }
+
+@media only screen and (max-width: 425px) {
+    .sidebarm {
+        display: none;
+        
+    }
+}
+@media only screen and (max-width: 1044px) {
+    .sidebarx {
+       display: none;
+        
+    }
+}
+
+
+.wrapper-agenda {
+    display: grid;
+    grid-template-areas: 
+        // "header"
+        "sidebar"
+        "content";
+
+    @include m.tablet {
+        grid-template-columns: 1fr 5fr;
+        grid-template-areas:
+            // "header header"
+            "sidebar content";
+    }
+}
+@media only screen and (max-width: 425px) {
+    .wrapper-agenda {
+       display: flex;
+       margin-top: 1rem;
+        
+    }
+}
+/* ================ INICIO HEADER ================ */
+.custom-page-header {
+    background-color: v.$blanco;
+
+    @include m.telefono {
+        display: grid;
+        grid-template-columns: auto 30rem;
+        background: rgb(140,146,188);
+        background: linear-gradient(135deg, rgba(140,146,188,1) 0%, rgba(140,146,188,1) 52%, rgba(117,124,176,1) 52%, rgba(140,146,188,1) 54%, rgba(140,146,188,1) 59%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 100%);
+    }
+
+    @include m.desktop {
+        grid-template-columns: auto 45rem;
+    }
+
+    & .separador {
+        display: none;
+
+        @include m.telefono {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        & .title-head {
+            margin-left: 2rem;
+        }
+
+        & .icono-agenda {
+            position: absolute;
+            width: 15rem;
+
+            margin-top: 8rem;
+            margin-left: 4rem;
+        }
+    }
+
+    & .separador-mobile {
+        background-color: rgb(140,146,188);
+        padding: 1rem;
+
+        @include m.telefono {
+            display: none;
+        }
+    }
+}
+
+.custom-image-header {
+    margin: auto;
+    width: auto;
+    height: 10rem;
+}
+
+.custom-border-header-1 {
+    border-style: none none solid none;
+    border-color: v.$morado_m2;
+    border-width: .3rem;
+}
+
+.custom-border-header-2 {
+    border-style: none none solid none;
+    border-color: v.$verde_v2;
+    border-width: .3rem;
+}
+
+.title-head {
+    color: v.$blanco;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+
+    font-size: 2rem;
+
+    @include m.telefono {
+        text-align: left;
+        font-size: 2.5rem;
+    }
+
+    @include m.desktop {
+        font-size: 3rem;
+    }
+}
+
+.title-head span {
+    font-weight: 700;
+}
+
+/* ================ INICIO SIDEBAR ================ */
+.custom-button {
+    padding: auto;
+    margin: auto;
+    font-size: 1rem;
+    border-radius: 0;
+    border-left: .5rem solid v.$morado_m2;
+    font-weight: 800;
+}
+
+.custom-button-eliminar {
+    padding: auto;
+    margin: auto;
+    font-size: 1rem;
+    border-radius: 0;
+    border-left: .5rem solid v.$verde_v2;
+    font-weight: 800;
+}
+
+.custom-border {
+    border-style: none none solid none;
+    border-color: v.$verde_v2;
+    border-width: .3rem;
+    // width: 96%;
+    margin: auto;
+}
+
+.custom-subtitle p {
+    background-color: v.$morado_m2;
+    width: 20rem;
+    margin: auto;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+
+    @include m.tablet {
+        width: 40rem;
+    }
+}
+
+.div-custom-input-audiencia label {
+    font-weight: 600;
+}
+
+.checkbox-todo-el-dia {
+    margin-top: 3.5rem;
+}
+
+.text-todo-el-dia {
+    font-weight: 600;
+}
+
+.div-custom-input-audiencia input {
+    height: 4rem;
+    width: 100%;
+    font-size: 1.4rem;
+    text-align: center;
+    background-color: v.$gris_g5;
+    border: .1rem solid v.$gris_g3;
+}
+
+.div-custom-input-audiencia textarea {
+    width: 100%;
+    font-size: 1.4rem;
+    text-align: left;
+    background-color: v.$gris_g5;
+    border: .1rem solid v.$gris_g3;
+}
+
+input.minimal {
+    background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+  }
+  
+input.minimal:focus {
+    background-image:
+        linear-gradient(45deg, green 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, green 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+    outline: 0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.principal-div-custom-select {
+    display: flex;
+    width: 100%;
+}
+
+.first-div-custom-select {
+    position: relative;
+    background-color: #8c92bc;
+    height: 3.5rem;
+    width: 20%;
+
+    @include m.tablet {
+        height: 4rem;
+        width: 13%;
+    }
+}
+
+.second-div-custom-select {
+    width: 80%;
+    @include m.tablet {
+        width: 87%;
+    }
+}
+
+.second-div-custom-select-2 {
+    width: 80%;
+    @include m.tablet {
+        width: 100%;
+    }
+}
+
+.first-div-custom-select img {
+    position: absolute;
+    height: 2.5rem;
+    width: 2.5rem;
+    top: 10%;
+    left: 25%;
+
+    @include m.tablet {
+        height: 2.5rem;
+        width: 2.5rem;
+        top: 17%;
+        left: 15%;
+    }
+}
+
+.custom-input {
+    height: 3.5rem;
+    width: 100%;
+    font-size: 1.4rem;
+    background-color: #f6f6f6;
+
+    @include m.tablet {
+        height: 4rem;
+    }
+}
+
+/* ================ MINI CALENDAR ================ */
+.custom-head-calendar {
+    background-color: v.$verde_v2;
+    padding: .5rem 0;
+    box-shadow: 2px 2px 10px v.$gris_g3;
+}
+
+.custon-mini-arrow {
+    align-self: center;
+}
+
+.custon-mini-arrow img {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.custom-mini-month-name p {
+    align-self: center;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.custom-body-calendar {
+    background-color: v.$morado_m2;
+    padding: 10px;
+}
+
+.calendar-day-name {
+    text-align: center;
+    color: v.$blanco;
+}
+
+.custom-mini-calendar-day-names {
+    border-bottom: .1rem solid v.$blanco;
+}
+
+/* ================ MINI EVENTOS ================ */
+
+.principal-div-custom-search {
+    display: flex;
+    width: 100%;
+}
+
+.first-div-custom-search {
+    position: relative;
+    background-color: #8c92bc;
+    height: 3rem;
+    width: 13%;
+}
+
+.first-div-custom-search-select-relevancias {
+    position: relative;
+    background-color: #8c92bc;
+    height: 3.9rem;
+    width: 13%;
+}
+
+.first-div-custom-search-select-relevancias img {
+    position: absolute;
+    height: 1.8rem;
+    width: 1.8rem;
+    top: 15%;
+    left: 15%;
+}
+
+
+.second-div-custom-search {
+    width: 87%;
+}
+
+.first-div-custom-search img {
+    position: absolute;
+    height: 1.8rem;
+    width: 1.8rem;
+    top: 15%;
+    left: 15%;
+}
+
+.custom-input-search {
+    height: 3rem;
+    width: 100%;
+    font-size: 1.4rem;
+    background-color: #f6f6f6;
+}
+
+.custom-card-eventos {
+    background-color: #ebebeb;
+}
+
+.custom-card-evento {
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+.custom-card-evento:hover {
+    background-color: #d8d8d8;
+}
+
+.custom-card-evento-div p {
+    margin: auto;
+    font-weight: 600;
+    color: v.$gris_g6;
+}
+
+.custom_card_evento_hora_inicio {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/** ================= Start Fullcalendar Classes Overwrite ================= */
+
+.fc-toolbar-chunk h2{
+    font-size: 2.3rem!important;
+    font-weight: 600;
+    color: v.$blanco;
+    background-color: v.$morado_m2;
+    text-transform: uppercase;
+    border-bottom: .5rem solid v.$verde_v2;
+    padding: 1rem 5rem;
+
+    @include m.tablet {
+        font-size: 1rem!important;
+    }
+
+    @include m.desktop {
+        font-size: 2.3rem!important;
+    }
+
+}
+//ivonne
+@media only screen and (max-width: 425px) {
+    .fc-toolbar-chunk {
+       display: none;
+     
+        }
+}
+
+
+// .fc-toolbar-chunk .fc-button-group button {
+.fc-button {
+    background-color: v.$morado_m2!important;
+    border-color: v.$gris_g7 v.$gris_g7 v.$gris_g7 v.$gris_g7!important;
+    border-bottom: .5rem solid v.$verde_v2!important;
+    font-weight: 600!important;
+
+    @include m.tablet {
+        font-size: .8rem!important;
+    }
+
+    @include m.desktop {
+        font-size: 1.2rem!important;
+    }
+
+    @include m.desktopXL {
+        font-size: 1.6rem!important;
+    }
+}
+
+.fc-button:hover {
+    background-color: v.$morado_m1!important;
+}
+
+.fc-button-active {
+    background-color: v.$morado_m1!important;
+    border-bottom: .5rem solid v.$verde_v2!important;
+}
+
+.fc-button:disabled {
+    opacity: 1!important;
+    background-color: v.$morado_m1!important;
+}
+
+.fc-icon {
+    display: flex;
+}
+
+.fc-scrollgrid thead {
+    background-color: v.$gris_g4;
+}
+
+.fc-col-header-cell-cushion {
+    text-transform: uppercase;
+    color: v.$negro;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.fc-daygrid-day-number {
+    color: v.$negro;
+}
+
+/** ================= End Fullcalendar Classes Overwrite ================= */
+
+.div_checkbox_filtro {
+    cursor: pointer;
+}
+
+.label_checkbox {
+    padding-left: 1rem;
+    font-weight: 600;
+    margin: auto;
+    cursor: pointer;
+}
+
+.checkbox_agenda {
+    background-color: v.$morado_m2;
+    padding: .5rem;
+    transition: .2s all ease-in-out;
+}
+
+.checkbox_agenda input {
+    margin: .5rem;
+}
+
+.checkbox_agenda:hover {
+    background-color: v.$morado_m1;
+}
+
+.checkbox_consejero {
+    background-color: v.$verde_v2;
+    padding: .5rem;
+    transition: .2s all ease-in-out;
+}
+
+.checkbox_consejero input {
+    margin: .5rem;
+}
+
+.checkbox_consejero:hover {
+    background-color: v.$verde_v3;
+}
+
+.text-validation-red {
+    font-size: 15px!important;
+    color: red;
+    text-align: left;
+}
+
+.button-logout {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #615f5f;
+    cursor: pointer;
+    text-decoration: none!important;
+}
+
+.show-calendar {
+    display: none;
+    @include m.tablet {
+        display: block;
+    }
+   
+}
+
+@media only screen and (max-width: 425px) {
+    .show-calendar1 {
+        display: block;
+        align-content:space-between;
+        width: 30rem;
+        
+        }
+}
+
+/** Boton Cerrar Sesión */
+.custom-card-step-action {
+    display: flex;
+    justify-content: center;
+
+    @include m.tablet {
+        justify-content: flex-end;
+    }
+}
+
+.custom-card-step-action-icon {
+    position: relative;
+    height: 3.9rem;
+    width: 3.5rem;
+    background-color: v.$morado_m2;
+    cursor: pointer;
+}
+
+.custom-card-step-action-icon img {
+    position: absolute;
+    height: 1.7rem;
+    width: 1.7rem;
+    top: 20%;
+    left: 23%;
+}
+
+.custom-card-button {
+    background-color: v.$verde_v2;
+    height: 3rem;
+    width: 100%;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+/** Inicio Custom Label - Input - Textarea */
+.div-custom-input-form label {
+    font-weight: 600;
+}
+
+.div-custom-input-form input {
+    height: 4rem;
+    width: 100%;
+    font-size: 1.4rem;
+    text-align: center;
+    background-color: v.$gris_g5;
+    border: .1rem solid v.$gris_g3;
+}
+
+.div-custom-input-form select {
+    height: 4rem;
+    width: 100%;
+    font-size: 1.4rem;
+    // text-align: center;
+    background-color: v.$gris_g5;
+    border: .1rem solid v.$gris_g3;
+}
+
+.div-custom-input-form-S input {
+    height: 4rem;
+    width: 100%;
+    font-size: 1.4rem;
+    border: .1rem solid v.$gris_g3;
+}
+
+.div-custom-input-form textarea {
+    width: 100%;
+    font-size: 1.4rem;
+    text-align: left;
+    background-color: v.$gris_g5;
+    border: .1rem solid v.$gris_g3;
+    outline: none;
+}
+/** Fin Custom Label - Input - Textarea */
+
+/** Inicio Custom arrow select */
+.custom-select {
+    height: 4rem;
+    font-size: 1.4rem;
+    background-color: v.$gris_g5;
+    cursor: pointer;
+    border: .1rem solid v.$gris_g3;
+}
+
+select.minimal {
+    background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+  }
+  
+select.minimal:focus {
+    background-image:
+        linear-gradient(45deg, green 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, green 50%),
+        linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+    outline: 0;
+}
+/**  Fin Custom arrow select */
+
+.link-archivo {
+    cursor: pointer;
+}
+
+.link-archivo:hover {
+    color:blue;
+}
+
+.div-email-compartir {
+    display: flex;
+}
+
+#input_correo_institucional {
+    // border-right: none;
+}
+
+#input_dominio_email {
+    width: 70%;
+    // border-left: none;
+}
+.disabled{
+    pointer-events:none;
+}
+
+.boton-nuevo{
+    color: white;
+    font-weight: bold!important;
+}

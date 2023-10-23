@@ -38,5 +38,17 @@ class TipoUsuarioSeeder extends Seeder
         DB::table('tipo_usuarios')->insert([
             'nombre' => 'Notificador',
         ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Secretario(a) de Pleno',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Auxiliar del Secretario de Pleno',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Oficial Mayor',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Auxiliar de  Oficial Mayor',
+        ]);
     }
 }

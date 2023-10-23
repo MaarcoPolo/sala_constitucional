@@ -225,9 +225,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-between  mb-4 mt-6">
+                        <div class="row justify-content-between mt-4">
+                            <div class="col-md-4 col-12">
+                                <div class="div-custom-input-form">
+                                    <label for="input_ponencia">Ponencia:</label>
+                                    <select id="select_ponencia" class="form-control minimal custom-select text-uppercase" v-model="v$.usuario.ponencia_id.$model">
+                                        <option  v-for="item in ponencias" :key="item.id" :value="item.id">{{item.nombre}}</option>
+                                    </select>
+                                    <p  class="text-validation-red" v-if="v$.usuario.ponencia_id.$error">*Campo obligatorio</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center  mb-4 mt-6">
                             <div class="col-md-1"></div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <v-btn
                                 class="custom-button mr-2"
                                 color="#c4f45d"
@@ -236,7 +247,7 @@
                                 Guardar
                                 </v-btn>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <v-btn
                                 class="custom-button ml-2"
                                 color="#6a73a0"
@@ -317,6 +328,17 @@
                                 </div>
                             </div>                                                               
                         </div>
+                        <div class="row justify-content-between mt-4">
+                            <div class="col-md-4 col-12">
+                                <div class="div-custom-input-form">
+                                    <label for="input_ponencia">Ponencia:</label>
+                                    <select id="select_ponencia" class="form-control minimal custom-select text-uppercase" v-model="v$.usuario.ponencia_id.$model">
+                                        <option  v-for="item in ponencias" :key="item.id" :value="item.id">{{item.nombre}}</option>
+                                    </select>
+                                    <p  class="text-validation-red" v-if="v$.usuario.ponencia_id.$error">*Campo obligatorio</p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row justify-content-between  mb-4 mt-6">
                             <div class="col-md-1"></div>
                             <div class="col-md-3">
@@ -353,7 +375,7 @@
     import { required, email } from '@vuelidate/validators'
 
     export default defineComponent({
-        name: 'usuarios',
+        name: 'Usuarios',
         data () {
             return { 
                 showNav: false,
@@ -367,7 +389,8 @@
                     email:'',
                     password:'',
                     tipo_usuario_id: null,
-                    username: ''
+                    username: '',
+                    ponencia_id: null
                 },               
                 loading: false,
                 elementosPorPagina: 10,
@@ -402,6 +425,9 @@
                         email: {
                             required,
                             email
+                        },
+                        ponencia_id: {
+                            required
                         }
                     }
                 }
@@ -409,6 +435,7 @@
         created() {
             this.getUsuarios()
             this.getTipoUsuarios()
+            this.getPonencias()
         },
         computed: {
         pages() {
@@ -423,6 +450,9 @@
             },
             tipoUsuarios() {
                     return this.$store.getters.getTipoUsuarios
+            },
+            ponencias(){
+                return this.$store.getters.getPonencias
             },
             user() {
                 return this.$store.getters.user
@@ -540,6 +570,22 @@
                     }
                 } catch (error) {
                     errorSweetAlert('Ocurrió un error al obtener los tipos de usuarios')
+                }
+            },
+            async getPonencias() {
+                try {
+                    let response = await axios.get('/api/ponencias')
+                    if (response.status === 200) {
+                        if (response.data.status === "ok") {
+                            this.$store.commit('setPonencias', response.data.ponencias)
+                        } else {
+                            errorSweetAlert(`${response.data.message}<br>Error: ${response.data.error}<br>Location: ${response.data.location}<br>Line: ${response.data.line}`)
+                        }
+                    } else {
+                        errorSweetAlert('Ocurrió un error al obtener las ponencias')
+                    }
+                } catch (error) {
+                    errorSweetAlert('Ocurrió un error al obtener las ponencias')
                 }
             },
             cerrarModalNuevoUsuario(){

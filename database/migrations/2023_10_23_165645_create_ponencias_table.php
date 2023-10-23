@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ponencias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',12);
+            $table->string('nombre',20);
             $table->string('titular',60);
             $table->boolean('status')->default(1);
             $table->timestamps();

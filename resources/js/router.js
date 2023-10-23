@@ -1,8 +1,12 @@
 import { createWebHistory, createRouter } from "vue-router";
 import store from './store'
-
 import Login from './pages/Login.vue'
 import Home from './pages/Home.vue'
+import Usuarios from './pages/catalogos/Usuarios.vue'
+import TipoUsuarios from './pages/catalogos/TipoUsuarios.vue'
+import Ponencias from './pages/catalogos/Ponencias.vue'
+import RegistroExpediente from './pages/RegistroExpediente.vue'
+
 
 const routes = [
     {
@@ -18,6 +22,38 @@ const routes = [
             requiresAuth: true
         }
     },
+    {
+        path: '/usuarios',
+        name: 'Usuarios',
+        component: Usuarios,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/tipo-usuario',
+        name: 'TipoUsuarios',
+        component: TipoUsuarios,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/registro-expediente',
+        name: 'RegistroExpediente',
+        component: RegistroExpediente,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/ponencias',
+        name: 'Ponencias',
+        component: Ponencias,
+        meta: {
+            requiresAuth: true
+        }
+    }
     
 ]
 

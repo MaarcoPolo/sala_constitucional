@@ -1,7 +1,6 @@
 import { createStore } from 'vuex'
 import { errorSweetAlert } from './../helpers/sweetAlertGlobals'
 import router from '../router'
-// import agenda from '../store/agenda'
 import catalogos from '../store/catalogos'
 
 const store = createStore({
@@ -63,7 +62,6 @@ const store = createStore({
         }
     },
     modules: {
-        // agenda,
         catalogos
     }
 })

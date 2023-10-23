@@ -19,7 +19,7 @@ const vuetify = createVuetify({
     directives,
     icons: {
         defaultSet: 'mdi', // This is already the default value - only for display purposes
-      },
+    },
 })
 
 window.Swal = swal;

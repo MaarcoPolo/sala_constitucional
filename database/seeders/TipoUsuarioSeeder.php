@@ -18,7 +18,25 @@ class TipoUsuarioSeeder extends Seeder
             'nombre' => 'Superadministrador',
         ]);
         DB::table('tipo_usuarios')->insert([
-            'nombre' => 'Administrador',
+            'nombre' => 'Magistrado Presidente',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Magistrado',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Secretario(a) Particular',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Secretario(a) de Acuerdos',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Secretario(a) de Estudio y Cuenta',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Auxiliar',
+        ]);
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Notificador',
         ]);
     }
 }

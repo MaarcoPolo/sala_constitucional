@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
             'nombre' => 'Informatica',
             'apellido_paterno' => 'informatica',
             'apellido_materno' => 'informatica',
-            'email' => 'flopez@pjpuebla.gob.mx',
-            'username' => 'administrador',
+            'email' => 'marco.olivares@pjpuebla.gob.mx',
+            'username' => 'superadmin',
             'password' => 'password',
             'tipo_usuario_id' => 1,
         ]);

@@ -26,16 +26,6 @@
                 z-index: 10000!important;
             }
         </style>
-
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YXPJE45QFG"></script>
-        
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-YXPJE45QFG');
-        </script>
     </head>
     <body class="antialiased">
         <div id="app"></div>

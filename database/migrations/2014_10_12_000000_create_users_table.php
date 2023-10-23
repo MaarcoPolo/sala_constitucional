@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('status')->default(1);
             $table->foreignId('tipo_usuario_id')->constrained();
+            // $table->foreignId('ponencia_id')->constrained();
             $table->rememberToken();
             $table->timestamps();
         });

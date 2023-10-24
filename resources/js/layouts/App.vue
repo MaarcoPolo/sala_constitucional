@@ -26,8 +26,11 @@
                             <a class="custom-dropdown-item" :class="currentRoute == 'Juicios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irJuicios()">Juicios</a>
                         </div>
                     </li>
-                    <li @mouseover="mouseOverRegistro()" @mouseleave="mouseLeaveRegistro()">
+                    <li :class="currentRoute == 'RegistroExpediente' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverRegistro()" @mouseleave="mouseLeaveRegistro()">
                         Registro
+                        <div class="custom-dropdown-menu dropdown-menu-catalogos" v-if="bandRegistro" >
+                            <a class="custom-dropdown-item" :class="currentRoute == 'RegistroExpediente' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irRegistroExpediente()">Registro de expediente</a>
+                        </div>
                     </li>
                     <li :class="currentRoute == 'Consulta' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverConsulta()" @mouseleave="mouseLeaveConsulta()">
                         Consultar
@@ -106,6 +109,9 @@
             },
             irJuicios() {
                 this.$router.push('/juicios')
+            },
+            irRegistroExpediente(){
+                this.$router.push('/registro-expediente')
             },
             mouseOverCatalogos() {
                 this.bandCatalogos = true

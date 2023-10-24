@@ -5,6 +5,7 @@ import Home from './pages/Home.vue'
 import Usuarios from './pages/catalogos/Usuarios.vue'
 import TipoUsuarios from './pages/catalogos/TipoUsuarios.vue'
 import Ponencias from './pages/catalogos/Ponencias.vue'
+import Juicios from './pages/catalogos/Juicios.vue'
 import RegistroExpediente from './pages/RegistroExpediente.vue'
 
 
@@ -39,22 +40,29 @@ const routes = [
         }
     },
     {
-        path: '/registro-expediente',
-        name: 'RegistroExpediente',
-        component: RegistroExpediente,
-        meta: {
-            requiresAuth: true
-        }
-    },
-    {
         path: '/ponencias',
         name: 'Ponencias',
         component: Ponencias,
         meta: {
             requiresAuth: true
         }
-    }
-    
+    },
+    {
+        path: '/juicios',
+        name: 'Juicios',
+        component: Juicios,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/registro-expediente',
+        name: 'RegistroExpediente',
+        component: RegistroExpediente,
+        meta: {
+            requiresAuth: true
+        }
+    },    
 ]
 
 const router = createRouter({

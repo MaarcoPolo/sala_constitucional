@@ -276,7 +276,7 @@
     import { required } from '@vuelidate/validators'
 
     export default defineComponent({
-        name: 'ponencias',
+        name: 'Ponencias',
         data () {
             return { 
                 showNav: false,

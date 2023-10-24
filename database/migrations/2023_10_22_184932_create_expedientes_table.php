@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->id();
+            $table->integer('expediente');
+            $table->integer('ayo');
+            $table->date('fecha');
+            $table->string('actor');
+            $table->string('demandado');
+            $table->string('archivo');
+            $table->integer('juicio_id');
+            $table->integer('ponencia_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

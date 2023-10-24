@@ -17,13 +17,13 @@
             <div class="custom-navbar">
                 <ul class="custom-ul-navbar m-0">
                     <li :class="currentRoute == 'Home' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @click="irInicio()">Inicio</li>
-                    <li :class="currentRoute == 'Usuarios' || currentRoute == 'Ponencias' || currenteRoute == 'TipoUsuarios' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverCatalogos()" @mouseleave="mouseLeaveCatalogos()">
+                    <li :class="currentRoute == 'Usuarios' || currentRoute == 'Ponencias' || currentRoute == 'TipoUsuarios' || currentRoute == 'Juicios' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverCatalogos()" @mouseleave="mouseLeaveCatalogos()">
                         Catálogos
                         <div class="custom-dropdown-menu dropdown-menu-catalogos" v-if="bandCatalogos" >
                             <a class="custom-dropdown-item" :class="currentRoute == 'Usuarios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irUsuarios()">Usuarios</a>
-                            <a class="custom-dropdown-item" :class="currentRoute == 'Ponencias' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irPonencias()">Ponencias</a>
                             <a class="custom-dropdown-item" :class="currentRoute == 'TipoUsuarios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irTipoUsuarios()">Tipo Usuarios</a>
-
+                            <a class="custom-dropdown-item" :class="currentRoute == 'Ponencias' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irPonencias()">Ponencias</a>
+                            <a class="custom-dropdown-item" :class="currentRoute == 'Juicios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irJuicios()">Juicios</a>
                         </div>
                     </li>
                     <li @mouseover="mouseOverRegistro()" @mouseleave="mouseLeaveRegistro()">
@@ -103,6 +103,9 @@
             },
             irTipoUsuarios() {
                 this.$router.push('/tipo-usuario')
+            },
+            irJuicios() {
+                this.$router.push('/juicios')
             },
             mouseOverCatalogos() {
                 this.bandCatalogos = true

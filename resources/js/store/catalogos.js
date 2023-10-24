@@ -2,7 +2,8 @@ export default {
     state: {
         usuarios: [],
         tipoUsuarios: [],
-        ponencias:[]
+        ponencias:[],
+        juicios:[]
 
     },
     getters: {
@@ -14,6 +15,9 @@ export default {
         },
         getPonencias(state) {
             return state.ponencias
+        },
+        getJuicios(state) {
+            return state.juicios
         }
     },
     mutations: {
@@ -25,6 +29,9 @@ export default {
         },
         setPonencias(state, payload) {
             state.ponencias = payload
+        },
+        setJuicios(state, payload) {
+            state.juicios = payload
         }
     }
 }

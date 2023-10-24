@@ -1,77 +1,107 @@
 <template>
     <v-container fluid="fluid">
         <v-card variant="elevated">
-            <v-card-title class="text-h3 text-center mt-10">Alta de Expediente</v-card-title>
-            <v-row justify="center" class="mt-5">
-                <v-col cols="10" sm="5" md="5">
-                    <v-autocomplete
-                        variant="outlined"
-                        label="Juicio para asignar"
-                        :items="['Acción de Tutela', 'Acciones de Inconstitucionalidad', 'Controversias Competenciales', 'Acción por Omisión Legislativa', 'Consulta interpretación de la Ley Orgánica del Poder Judicial del Estado de Puebla', 'Recurso de Revocación','Recurso de Revisión']"
-                    ></v-autocomplete>
-                </v-col>
-            </v-row>
-            <v-row justify="center">
-                <v-col cols="12" sm="4" md="2">
-                    <v-text-field
+            <div class="row justify-content-center mt-12">
+                <div class="card-titulo-page mt-2">
+                    <img class="icono-page" src="../../../public/icons/alta_expediente.png" alt="">
+                    <p>Alta de Expediente</p>
+                </div>
+             </div>
+             <div class="container mt-16">
+                <div class="row justify-content-between mt-8">
+                    <div class="col-md-4 col-12">
+                        <v-text-field
                         v-model="dato.expediente"
                         label="Expediente"
                         placeholder="Expediente"
                         variant="outlined"
                         clearable
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="4" md="2">
-                    <v-text-field
+                       ></v-text-field>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <v-text-field
                         v-model="dato.ayo"
                         label="Año"
                         placeholder="Año"
                         variant="outlined"
                         clearable
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="4" md="2">
-                    <v-text-field
+                        ></v-text-field>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <v-text-field
                         v-model="dato.fecha"
                         label="Fecha"
                         placeholder="Fecha"
                         variant="outlined"
                         clearable
                         type="date"
-                    ></v-text-field>
-                </v-col>
-            </v-row>
-            <v-row justify="center">
-                <v-col cols="12" sm="6" md="4">
-                    <v-text-field
+                          ></v-text-field>
+                    </div>
+                </div>
+                <div class="row justify-content-between mt-8">
+                    <div class="col-md-6 col-12">
+                        <v-text-field
                         v-model="dato.actor"
                         label="Actor"
                         placeholder="Actor"
                         variant="outlined"
                         clearable
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                    <v-text-field
+                        ></v-text-field>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <v-text-field
                         v-model="dato.demandado"
                         label="Demandado"
                         placeholder="Demandado"
                         variant="outlined"
                         clearable
-                    ></v-text-field>
-                </v-col>
-            </v-row>
-            <v-row justify="center">
-                <v-col cols="12" sm="6" md="4">
-                    <v-file-input
-                    v-model="dato.archivo"
-                    show-size
-                    label="Archivo"
-                    variant="outlined"
-                    accept="application/pdf">
-                    </v-file-input>
-                </v-col>
-            </v-row>
+                        ></v-text-field>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-12">
+                    <v-autocomplete
+                        variant="outlined"
+                        label="Juicio para asignar"
+                        :items="['Acción de Tutela', 'Acciones de Inconstitucionalidad', 'Controversias Competenciales', 'Acción por Omisión Legislativa', 'Consulta interpretación de la Ley Orgánica del Poder Judicial del Estado de Puebla', 'Recurso de Revocación','Recurso de Revisión']"
+                    ></v-autocomplete>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-12">
+                        <v-file-input
+                        v-model="dato.archivo"
+                        show-size
+                        label="Archivo"
+                        variant="outlined"
+                        accept="application/pdf">
+                        </v-file-input>
+                    </div>
+                </div>
+             </div>
+             <div class="row justify-content-between  mb-4 mt-7">
+                
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2 mt-6 mb-4">
+                                <v-btn
+                                class="custom-button mr-2"
+                                color="#c4f45d"
+                                @click="guardarNuevaPonencia()"
+                                >
+                                Guardar
+                                </v-btn>
+                            </div>
+                            <div class="col-md-2 mt-6">
+                                <v-btn
+                                class="custom-button ml-2"
+                                color="#6a73a0"
+                                @click="cerrarModalNuevaPonencia()"
+                                >
+                                Cancelar
+                            </v-btn>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
         </v-card>
     </v-container>
 </template>

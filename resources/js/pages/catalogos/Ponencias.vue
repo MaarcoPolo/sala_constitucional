@@ -163,7 +163,7 @@
             <v-dialog v-model="dialogNuevaPonencia" max-width="100rem" persistent>
                 <v-card>
                     <v-card-title class="text-center">
-                        <h3 class="mt-5 custom-dialog-title">Nueva Ponencia</h3>
+                        <h3 class="mt-6 custom-dialog-title">Nueva Ponencia</h3>
                     </v-card-title>
                     <v-card-text>
                         <div class="text-center my-3 custom-border">
@@ -187,9 +187,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-between  mb-4 mt-6">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3">
+                        <div class="row justify-content-between  mb-4 mt-7">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2 mt-6 mb-4">
                                 <v-btn
                                 class="custom-button mr-2"
                                 color="#c4f45d"
@@ -198,7 +198,7 @@
                                 Guardar
                                 </v-btn>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2 mt-6">
                                 <v-btn
                                 class="custom-button ml-2"
                                 color="#6a73a0"
@@ -207,7 +207,7 @@
                                 Cancelar
                             </v-btn>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                         </div>
                     </v-card-text>
                 </v-card>
@@ -241,7 +241,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-between  mb-4 mt-6">
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-3">
                             <v-btn
                                 class="custom-button mr-2"

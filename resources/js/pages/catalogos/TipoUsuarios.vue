@@ -176,9 +176,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-between  mb-4 mt-6">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3">
+                        <div class="row justify-content-between">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2 mt-6 mb-4">
                                 <v-btn
                                 class="custom-button mr-2"
                                 color="#c4f45d"
@@ -187,7 +187,7 @@
                                 Guardar
                                 </v-btn>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2 mt-6">
                                 <v-btn
                                 class="custom-button ml-2"
                                 color="#6a73a0"
@@ -196,7 +196,7 @@
                                 Cancelar
                             </v-btn>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                         </div>
                     </v-card-text>
                 </v-card>
@@ -223,7 +223,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-between  mb-4 mt-6">
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-3">
                             <v-btn
                                 class="custom-button mr-2"

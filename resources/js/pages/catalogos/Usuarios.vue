@@ -236,9 +236,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center  mb-4 mt-6">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-4">
+                        <div class="row justify-content-between">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2 mt-6 mb-4">
                                 <v-btn
                                 class="custom-button mr-2"
                                 color="#c4f45d"
@@ -247,7 +247,7 @@
                                 Guardar
                                 </v-btn>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2 mt-6">
                                 <v-btn
                                 class="custom-button ml-2"
                                 color="#6a73a0"
@@ -256,7 +256,7 @@
                                 Cancelar
                             </v-btn>
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                         </div>
                     </v-card-text>
                 </v-card>
@@ -317,8 +317,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-between mt-4">
-                            <div class="col-md-4 col-12">
+                        <div class="row justify-content-between">
+                            <div class="col-md-6 col-12">
                                 <div class="div-custom-input-form">
                                     <label for="select_tipo_usuario">Tipo de usuario:</label>
                                     <select id="select_tipo_usuario" class="form-control minimal custom-select text-uppercase" v-model="v$.usuario.tipo_usuario_id.$model">
@@ -326,10 +326,8 @@
                                     </select>
                                     <p class="text-validation-red" v-if="v$.usuario.tipo_usuario_id.$error">*Campo obligatorio</p>
                                 </div>
-                            </div>                                                               
-                        </div>
-                        <div class="row justify-content-between mt-4">
-                            <div class="col-md-4 col-12">
+                            </div>  
+                            <div class="col-md-6 col-12">
                                 <div class="div-custom-input-form">
                                     <label for="input_ponencia">Ponencia:</label>
                                     <select id="select_ponencia" class="form-control minimal custom-select text-uppercase" v-model="v$.usuario.ponencia_id.$model">
@@ -337,10 +335,11 @@
                                     </select>
                                     <p  class="text-validation-red" v-if="v$.usuario.ponencia_id.$error">*Campo obligatorio</p>
                                 </div>
-                            </div>
+                            </div>                                                             
                         </div>
+                        
                         <div class="row justify-content-between  mb-4 mt-6">
-                            <div class="col-md-1"></div>
+                            <div class="col-md-2"></div>
                             <div class="col-md-3">
                             <v-btn
                                 class="custom-button mr-2"
@@ -359,7 +358,7 @@
                                 Cancelar
                             </v-btn>
                         </div>
-                        <div class="col-md-1"></div>
+                        <div class="col-md-2"></div>
                         </div>
                     </v-card-text>
                 </v-card>

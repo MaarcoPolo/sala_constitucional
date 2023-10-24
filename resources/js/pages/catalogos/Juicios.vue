@@ -3,7 +3,7 @@
         <div class="row justify-content-center mt-12">
             <div class="card-titulo-page mt-2">
                 <img class="icono-page" src="../../../../public/icons/ventanilla.png" alt="">
-                <p>Ponencias</p>
+                <p>Juicios</p>
             </div>
         </div>
         <div class="container mt-16">
@@ -14,9 +14,9 @@
                         class="custom-button"
                         block
                         color="#c4f45d"
-                        @click="abrirModalNuevaPonencia()"
+                        @click="abrirModalNuevoJuicio()"
                         >
-                        Nueva Ponencia
+                        Nuevo Juicio
                     </v-btn>
                 </div>
                 <div class="col-md-5 col-12"></div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <!--INICIO DE LA TABLA PONENCIAS-->
+            <!--INICIO DE LA TABLA JUICIOS-->
             <div class="my-2 mb-12 py-6">
                 <div class="">
                     <div class="row justify-content-between">
@@ -40,7 +40,7 @@
                                 <tr>
                                     <th class="custom-title-table">No.</th>
                                     <th class="custom-title-table">Nombre</th>
-                                    <th class="custom-title-table">Titular</th>
+                                    <th class="custom-title-table">Nomenclatura</th>
                                     <th class="custom-title-table">Acciones</th>
                                 </tr>
                             </thead>
@@ -53,21 +53,21 @@
                                         </div>
                                     </th>
                                 </tr>
-                                <tr v-else v-for="ponencia in datosPaginados" :key="ponencia.id">
+                                <tr v-else v-for="juicio in datosPaginados" :key="juicio.id">
                                     <td class="custom-data-table">
-                                        {{ponencia.numero_registro}}
+                                        {{juicio.numero_registro}}
                                     </td>
                                     <td class="custom-data-table text-uppercase">
-                                        {{ponencia.nombre}}
+                                        {{juicio.nombre}}
                                     </td>
                                     <td class="custom-data-table text-uppercase">
-                                        {{ponencia.titular}}
+                                        {{juicio.nomenclatura}}
                                     </td>
                                     <td>
                                         <div class="text-center row justify-content-center">
                                             <div>
                                                 <v-icon
-                                                    @click="abrirModalEditarPonencia(ponencia)"
+                                                    @click="abrirModalEditarJuicio(juicio)"
                                                     class="mr-1"
                                                     >
                                                     mdi-text-box-edit-outline
@@ -77,12 +77,12 @@
                                                     activator="parent"
                                                     location="bottom"
                                                     >
-                                                    <span style="font-size: 15px;">Editar Ponencia</span>
+                                                    <span style="font-size: 15px;">Editar Juicio</span>
                                                 </v-tooltip>
                                             </div>
                                             <div>
                                                 <v-icon
-                                                    @click="eliminarPonencia(ponencia)"
+                                                    @click="eliminarJuicio(juicio)"
                                                     class="ml-1"
                                                     >
                                                     mdi-trash-can
@@ -92,7 +92,7 @@
                                                     activator="parent"
                                                     location="bottom"
                                                     >
-                                                    <span style="font-size: 15px;">Eliminar Ponencia</span>
+                                                    <span style="font-size: 15px;">Eliminar Juicio</span>
                                                 </v-tooltip>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                         </table>
                     </div>
                     <div>
-                        <template v-if="ponencias && ponencias.length > 0">
+                        <template v-if="juicios && juicios.length > 0">
                             <div class="row justify-content-between container">
                                 <div>
                                     <p class="custom-text-show-results mt-2">
@@ -111,7 +111,7 @@
                                         -
                                         <span>{{to}}</span>
                                         de
-                                        <span>{{ponencias.length}}</span>
+                                        <span>{{juicios.length}}</span>
                                         resultados
                                     </p>
                                 </div>
@@ -154,16 +154,16 @@
                         </template>
                         <template v-else-if="!loading">
                             <div class="text-center">
-                                <p class="no-data-text">No hay ponencias disponibles</p>
+                                <p class="no-data-text">No hay juicios disponibles</p>
                             </div>
                         </template>
                     </div>
                 </div>
             </div>
-            <v-dialog v-model="dialogNuevaPonencia" max-width="100rem" persistent>
+            <v-dialog v-model="dialogNuevoJuicio" max-width="100rem" persistent>
                 <v-card>
                     <v-card-title class="text-center">
-                        <h3 class="mt-5 custom-dialog-title">Nueva Ponencia</h3>
+                        <h3 class="mt-5 custom-dialog-title">Nuevo Juicio</h3>
                     </v-card-title>
                     <v-card-text>
                         <div class="text-center my-3 custom-border">
@@ -171,19 +171,19 @@
                                 <p>Datos</p>
                             </div>
                         </div>
-                        <div class="row justify-content-between">
+                        <div class="row justify-content-center">
                             <div class="col-md-6 col-12">
                                 <div class="div-custom-input-form">
-                                    <label for="input_nombre">Nombre de la ponencia:</label>
-                                    <input id="input_nombre" type="text" class="form-control" v-model="v$.ponencia.nombre.$model">
-                                    <p class="text-validation-red" v-if="v$.ponencia.nombre.$error">*Campo obligatorio</p>
+                                    <label for="input_nombre">Nombre del juicio:</label>
+                                    <input id="input_nombre" type="text" class="form-control" v-model="v$.juicio.nombre.$model">
+                                    <p class="text-validation-red" v-if="v$.juicio.nombre.$error">*Campo obligatorio</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="div-custom-input-form">
-                                    <label for="input_email">Titular:</label>
-                                    <input id="input_email" type="email" class="form-control" v-model="v$.ponencia.titular.$model">
-                                    <p  class="text-validation-red" v-if="v$.ponencia.titular.$error">*Campo obligatorio</p>
+                                    <label for="input_nombre">Nomenclatura:</label>
+                                    <input id="input_nombre" type="text" class="form-control" v-model="v$.juicio.nomenclatura.$model">
+                                    <p class="text-validation-red" v-if="v$.juicio.nomenclatura.$error">*Campo obligatorio</p>
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
                                 <v-btn
                                 class="custom-button mr-2"
                                 color="#c4f45d"
-                                @click="guardarNuevaPonencia()"
+                                @click="guardarNuevoJuicio()"
                                 >
                                 Guardar
                                 </v-btn>
@@ -202,7 +202,7 @@
                                 <v-btn
                                 class="custom-button ml-2"
                                 color="#6a73a0"
-                                @click="cerrarModalNuevaPonencia()"
+                                @click="cerrarModalNuevoJuicio()"
                                 >
                                 Cancelar
                             </v-btn>
@@ -212,11 +212,11 @@
                     </v-card-text>
                 </v-card>
             </v-dialog>
-            <!-- INICIO MODAL PARA EDITAR DATOS DE LA PONENCIA -->
-            <v-dialog v-model="dialogEditarPonencia" max-width="100rem" persistent>
+            <!-- INICIO MODAL PARA EDITAR DATOS DE LOS JUICIOS -->
+            <v-dialog v-model="dialogEditarJuicio" max-width="100rem" persistent>
                 <v-card>
                     <v-card-title class="text-center">
-                        <h3 class="mt-2 custom-dialog-title">Editar Ponencia</h3>
+                        <h3 class="mt-2 custom-dialog-title">Editar Juicio</h3>
                     </v-card-title>
                     <v-card-text>
                         <div class="text-center my-8 custom-border">
@@ -224,19 +224,19 @@
                                 <p>Datos</p>
                             </div>
                         </div>
-                        <div class="row justify-content-between">
+                        <div class="row justify-content-center">
                             <div class="col-md-6 col-12">
                                 <div class="div-custom-input-form">
-                                    <label for="input_nombre">Nombre:</label>
-                                    <input id="input_nombre" type="text" class="form-control" v-model="v$.ponencia.nombre.$model">
-                                    <p class="text-validation-red" v-if="v$.ponencia.nombre.$error">*Campo obligatorio</p>
+                                    <label for="input_nombre">Nombre del juicio:</label>
+                                    <input id="input_nombre" type="text" class="form-control" v-model="v$.juicio.nombre.$model">
+                                    <p class="text-validation-red" v-if="v$.juicio.nombre.$error">*Campo obligatorio</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="div-custom-input-form">
-                                    <label for="input_email">Titular:</label>
-                                    <input id="input_email" type="email" class="form-control" v-model="v$.ponencia.titular.$model">
-                                    <p class="text-validation-red" v-if="v$.ponencia.titular.$error">*Campo obligatorio</p>
+                                    <label for="input_nombre">Nomenclatura:</label>
+                                    <input id="input_nombre" type="text" class="form-control" v-model="v$.juicio.nomenclatura.$model">
+                                    <p class="text-validation-red" v-if="v$.juicio.nomenclatura.$error">*Campo obligatorio</p>
                                 </div>
                             </div>
                         </div>
@@ -246,7 +246,7 @@
                             <v-btn
                                 class="custom-button mr-2"
                                 color="#c4f45d"
-                                @click="guardarCambiosEditarPonencia()"
+                                @click="guardarCambiosEditarJuicio()"
                                 >
                                 Guardar
                             </v-btn>
@@ -255,7 +255,7 @@
                             <v-btn
                                 class="custom-button ml-2"
                                 color="#6a73a0"
-                                @click="cerrarModalNuevaPonencia()"
+                                @click="cerrarModalNuevoJuicio()"
                                 >
                                 Cancelar
                             </v-btn>
@@ -276,16 +276,16 @@
     import { required } from '@vuelidate/validators'
 
     export default defineComponent({
-        name: 'Ponencias',
+        name: 'Juicios',
         data () {
             return { 
                 showNav: false,
-                dialogNuevaPonencia: false,
-                dialogEditarPonencia: false,
-                ponencia: {
+                dialogNuevoJuicio: false,
+                dialogEditarJuicio: false,
+                juicio: {
                     id: null,
                     nombre: '',
-                    titular:'',
+                    nomenclatura:''
                 },               
                 loading: false,
                 elementosPorPagina: 10,
@@ -306,18 +306,18 @@
         },
         validations() {
                 return {
-                    ponencia: {
+                    juicio: {
                         nombre: {
                             required
                         },
-                        titular: {
+                        nomenclatura:{
                             required
                         }
                     }
                 }
         },
         created() {
-            this.getPonencias()
+            this.getJuicios()
         },
         computed: {
         pages() {
@@ -327,16 +327,15 @@
             first = Math.min(first, this.totalPaginas() - numShown + 1)
             return [...Array(numShown)].map((k, i) => i + first)
             },
-            ponencias() {
-                    return this.$store.getters.getPonencias
+            juicios() {
+                    return this.$store.getters.getJuicios
             },
         },
         watch: {
             buscar: function () {
                 if (!this.buscar.length == 0) {
-                    this.datosPaginados = this.ponencias.filter(item => {
+                    this.datosPaginados = this.juicios.filter(item => {
                         return item.nombre.toLowerCase().includes(this.buscar.toLowerCase())
-                        || item.titular.toLowerCase().includes(this.buscar.toLowerCase())                   
                     })
                 } else {
                     this.getDataPagina(1)
@@ -353,7 +352,7 @@
                 this.$store.dispatch('logout')
             },
             totalPaginas() {
-                return Math.ceil(this.ponencias.length / this.elementosPorPagina)
+                return Math.ceil(this.juicios.length / this.elementosPorPagina)
             },
             getDataPagina(noPagina) {
                 this.paginaActual = noPagina
@@ -363,8 +362,8 @@
                 let fin = (noPagina * this.elementosPorPagina)
 
                 for (let index = ini; index < fin; index++) {
-                    if (this.ponencias[index]) {
-                        this.datosPaginados.push(this.ponencias[index])
+                    if (this.juicios[index]) {
+                        this.datosPaginados.push(this.juicios[index])
                     }
                 }
                 // Para el texto "Mostrando 1 - 10 de 20 resultados"
@@ -372,7 +371,7 @@
                 if (noPagina < this.totalPaginas()) {
                     this.to = fin
                 } else {
-                    this.to = this.ponencias.length
+                    this.to = this.juicios.length
                 }
             },
             getFirstPage() {
@@ -405,45 +404,45 @@
             setCurrentPage(pagina) {
                 this.current = pagina
             },
-            abrirModalNuevaPonencia(){
-                this.dialogNuevaPonencia = true
+            abrirModalNuevoJuicio(){
+                this.dialogNuevoJuicio = true
             },
-            async getPonencias() {
+            async getJuicios() {
                 this.loading = true
                 try {                   
-                    let response = await axios.get('/api/ponencias', this.ponencia)
+                    let response = await axios.get('/api/juicios', this.juicio)
                     if (response.status === 200) {
                         if (response.data.status === "ok") {
-                            this.$store.commit('setPonencias', response.data.ponencias)
+                            this.$store.commit('setJuicios', response.data.juicios)
                             this.mostrar = true
                         } else {
                             errorSweetAlert(`${response.data.message}<br>Error: ${response.data.error}<br>Location: ${response.data.location}<br>Line: ${response.data.line}`)
                         }
                     } else {
-                        errorSweetAlert('Ocurrió un error al obtener las Ponencias')
+                        errorSweetAlert('Ocurrió un error al obtener los juicios')
                     }
                 } catch (error) {
-                    errorSweetAlert('Ocurrió un error al obtener las Ponencias')
+                    errorSweetAlert('Ocurrió un error al obtener los juicios')
                 }
                 this.loading = false
             },
-            cerrarModalNuevaPonencia(){
-                this.dialogNuevaPonencia = false
-                this.dialogEditarPonencia = false
-                this.ponencia.nombre =''
-                this.ponencia.titular =''
+            cerrarModalNuevoJuicio(){
+                this.dialogNuevoJuicio = false
+                this.dialogEditarJuicio = false
+                this.juicio.nombre = ''
+                this.juicio.nomenclatura = ''
             },
-            abrirModalEditarPonencia(ponencia){
-                this.dialogEditarPonencia=true 
-                this.ponencia.id = ponencia.id
-                this.ponencia.nombre = ponencia.nombre
-                this.ponencia.titular = ponencia.titular
+            abrirModalEditarJuicio(juicio){
+                this.dialogEditarJuicio=true 
+                this.juicio.id = juicio.id
+                this.juicio.nombre = juicio.nombre
+                this.juicio.nomenclatura = juicio.nomenclatura
             },
-            async guardarNuevaPonencia() {
-                const isFormCorrect = await this.v$.ponencia.$validate()              
+            async guardarNuevoJuicio() {
+                const isFormCorrect = await this.v$.juicio.$validate()              
                 if (!isFormCorrect) return
                 Swal.fire({
-                    title: '¿Guardar nueva Ponencia?',
+                    title: '¿Guardar nuevo Juicio?',
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085D6',
@@ -454,10 +453,10 @@
                     preConfirm: async () => {
                         try {
                                 this.loading = true
-                                let response = await axios.post('/api/ponencias/nueva-ponencia', this.ponencia)
+                                let response = await axios.post('/api/juicios/nuevo-juicio', this.juicio)
                                 return response
                             } catch (error) {
-                                errorSweetAlert('Ocurrió un error al guardar la Ponencia.')
+                                errorSweetAlert('Ocurrió un error al guardar el juicio.')
                             }
                         },
                         allowOutsideClick: () => !Swal.isLoading()
@@ -466,9 +465,9 @@
                             if (result.value.status === 200) {
                                 if (result.value.data.status === "ok") {
                                     successSweetAlert(result.value.data.message)
-                                    this.$store.commit('setPonencias', result.value.data.ponencias)
+                                    this.$store.commit('setJuicios', result.value.data.juicios)
                                     this.loading = false
-                                    this.cerrarModalNuevaPonencia()
+                                    this.cerrarModalNuevoJuicio()
                                     this.getDataPagina(1)
                                 } else if(result.value.data.status==="exists"){
                                     warningSweetAlert(result.value.data.message)
@@ -477,13 +476,13 @@
                                     errorSweetAlert(`${result.value.data.message}<br>Error: ${result.value.data.error}<br>Location: ${result.value.data.location}<br>Line: ${result.value.data.line}`)
                                 }
                             } else {
-                                errorSweetAlert('Ocurrió un error al guardar la Ponencia')
+                                errorSweetAlert('Ocurrió un error al guardar el juicio')
                             }
                         }
                     })
             },
-            async guardarCambiosEditarPonencia() {
-                const isFormCorrect = await this.v$.ponencia.$validate()              
+            async guardarCambiosEditarJuicio() {
+                const isFormCorrect = await this.v$.juicio.$validate()              
                 if (!isFormCorrect) return
                     Swal.fire({
                         title: '¿Guardar cambios?',
@@ -497,10 +496,10 @@
                         preConfirm: async () => {
                             try {
 
-                                let response = await axios.post('/api/ponencias/actualizar-ponencia', this.ponencia)
+                                let response = await axios.post('/api/juicios/actualizar-juicio', this.juicio)
                                 return response
                             } catch (error) {
-                                errorSweetAlert('Ocurrió un error al actualizar los datos de la ponencia.')
+                                errorSweetAlert('Ocurrió un error al actualizar los datos del juicio.')
                             }
                         },
                         allowOutsideClick: () => !Swal.isLoading()
@@ -509,21 +508,21 @@
                             if (result.value.status === 200) {
                                 if (result.value.data.status === "ok") {
                                     successSweetAlert(result.value.data.message)
-                                    this.$store.commit('setPonencias', result.value.data.ponencias)
-                                    this.cerrarModalNuevaPonencia()
+                                    this.$store.commit('setJuicios', result.value.data.juicios)
+                                    this.cerrarModalNuevoJuicio()
                                     this.getDataPagina(1)
                                 } else {
                                     errorSweetAlert(`${result.value.data.message}<br>Error: ${result.value.data.error}<br>Location: ${result.value.data.location}<br>Line: ${result.value.data.line}`)
                                 }
                             } else {
-                                errorSweetAlert('Ocurrió un error al actualizar los datos de la Ponencia.')
+                                errorSweetAlert('Ocurrió un error al actualizar los datos del juicio.')
                             }
                         }
                     })
             },
-            async eliminarPonencia(ponencia) {
+            async eliminarJuicio(juicio) {
                 Swal.fire({
-                title: '¿Eliminar Ponencia?',
+                title: '¿Eliminar Juicio?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085D6',
@@ -534,10 +533,10 @@
                 preConfirm: async () => {
                     try {
                         
-                        let response = await axios.post('/api/ponencias/eliminar-ponencia', ponencia)
+                        let response = await axios.post('/api/juicios/eliminar-juicio', juicio)
                         return response
                     } catch (error) {
-                        errorSweetAlert('Ocurrió un error al eliminar esta Ponencia.')
+                        errorSweetAlert('Ocurrió un error al eliminar este Juicio.')
                     }
                 },
                 allowOutsideClick: () => !Swal.isLoading()
@@ -546,13 +545,13 @@
                     if (result.value.status === 200) {
                         if (result.value.data.status === "ok") {
                             successSweetAlert(result.value.data.message)
-                            this.$store.commit('setPonencias', result.value.data.ponencias)
+                            this.$store.commit('setJuicios', result.value.data.juicios)
                             this.getDataPagina(1)
                         } else {
                             errorSweetAlert(`${result.value.data.message}<br>Error: ${result.value.data.error}<br>Location: ${result.value.data.location}<br>Line: ${result.value.data.line}`)
                         }
                     } else {
-                        errorSweetAlert('Ocurrió un error al eliminar esta Ponencia.')
+                        errorSweetAlert('Ocurrió un error al eliminar este juicio.')
                     }
                 }
             })

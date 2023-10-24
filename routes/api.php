@@ -6,6 +6,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PonenciaController;
+use App\Http\Controllers\JuicioController;
+use App\Http\Controllers\ExpedienteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +47,15 @@ Route::group(['middleware' => 'auth:sanctum'], function ($router) {
     Route::post('/ponencias/nueva-ponencia', [PonenciaController::class, 'nuevaPonencia']);
     Route::post('/ponencias/actualizar-ponencia', [PonenciaController::class, 'actualizarPonencia']);
     Route::post('/ponencias/eliminar-ponencia', [PonenciaController::class, 'eliminarPonencia']);
+
+     //Catalogo de Ponencias
+    Route::get('/juicios', [JuicioController::class, 'getJuicios']);
+    Route::post('/juicios/nuevo-juicio', [JuicioController::class, 'nuevoJuicio']);
+    Route::post('/juicios/actualizar-juicio', [JuicioController::class, 'actualizarJuicio']);
+    Route::post('/juicios/eliminar-juicio', [JuicioController::class, 'eliminarJuicio']);
+
+    //Rutas para funcionalidad de la vista de expediente
+    Route::get('/datos', [ExpedienteController::class, 'getDatos']);
+
 
 });

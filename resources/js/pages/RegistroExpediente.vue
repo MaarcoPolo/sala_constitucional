@@ -10,11 +10,11 @@
              <div class="container mt-16">
                 <div class="row justify-content-between mt-8">
                     <div class="col-md-4 col-12">
-                        <v-text-field
+                    <v-text-field
                         v-model="dato.expediente"
                         label="Expediente"
                         placeholder="Expediente"
-                        variant="outlined"
+                        variant="solo-filled"
                         clearable
                        ></v-text-field>
                     </div>
@@ -23,28 +23,28 @@
                         v-model="dato.ayo"
                         label="Año"
                         placeholder="Año"
-                        variant="outlined"
+                        variant="solo-filled"
                         clearable
                         ></v-text-field>
                     </div>
                     <div class="col-md-4 col-12">
                         <v-text-field
-                        v-model="dato.fecha"
-                        label="Fecha"
-                        placeholder="Fecha"
-                        variant="outlined"
-                        clearable
-                        type="date"
-                          ></v-text-field>
+                            v-model="dato.fecha"
+                            label="Fecha"
+                            placeholder="Fecha"
+                            variant="solo-filled"
+                            clearable
+                            type="date"
+                        ></v-text-field>
                     </div>
                 </div>
                 <div class="row justify-content-between mt-8">
                     <div class="col-md-6 col-12">
-                        <v-text-field
+                    <v-text-field
                         v-model="dato.actor"
                         label="Actor"
                         placeholder="Actor"
-                        variant="outlined"
+                        variant="solo-filled"
                         clearable
                         ></v-text-field>
                     </div>
@@ -53,7 +53,7 @@
                         v-model="dato.demandado"
                         label="Demandado"
                         placeholder="Demandado"
-                        variant="outlined"
+                        variant="solo-filled"
                         clearable
                         ></v-text-field>
                     </div>
@@ -120,15 +120,19 @@
                     fecha: '',
                     actor:'',
                     demandado:'',
-                    archivo:''
+                    archivo:'',
+                    juicio_id:''
                 },
             }
         },
         created() {
         this.getDatos()
-        
+        this.getJuicios()        
         },
         computed: {
+            juicios() {
+                    return this.$store.getters.getJuicios
+            }
         },
         watch: {
         },
@@ -166,7 +170,7 @@
                     preConfirm: async () => {
                         try {
                                 this.loading = true
-                                let response = await axios.post('/api/EscuelaEstatal-registro/guardar', this.registro,)
+                                let response = await axios.post('/api/registro-expediente', this.dato,)
                                 return response
                             } catch (error) {
                                 errorSweetAlert('Ocurrió un error al guardar el registro.')
@@ -191,7 +195,30 @@
                 })
             },
             LimpiarFormulario(){
-                
+                this.dato.id = ''
+                this.dato.juicio_id = ''
+                this.dato.expediente= ''
+                this.dato.ayo = ''
+                this.dato.fecha = ''
+                this.dato.actor = ''
+                this.dato.demandado = ''
+                this.dato.archivo = ''
+            },
+            async getJuicios() {
+                try {
+                    let response = await axios.get('/api/juicios')
+                    if (response.status === 200) {
+                        if (response.data.status === "ok") {
+                            this.$store.commit('setJuicios', response.data.juicios)
+                        } else {
+                            errorSweetAlert(`${response.data.message}<br>Error: ${response.data.error}<br>Location: ${response.data.location}<br>Line: ${response.data.line}`)
+                        }
+                    } else {
+                        errorSweetAlert('Ocurrió un error al obtener los juicios')
+                    }
+                } catch (error) {
+                    errorSweetAlert('Ocurrió un error al obtener los juicios')
+                }
             },
         }
     })

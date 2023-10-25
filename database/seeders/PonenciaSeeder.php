@@ -34,10 +34,6 @@ class PonenciaSeeder extends Seeder
             'titular' => 'EMMA MÓNICA GARIBAY HERNÁNDEZ',
         ]);
         DB::table('ponencias')->insert([
-            'nombre' => 'PONENCIA 5',
-            'titular' => 'EMMA MÓNICA GARIBAY HERNÁNDEZ',
-        ]);
-        DB::table('ponencias')->insert([
             'nombre' => 'SECRETARÍA DE PLENO',
             'titular' => 'JOSÉ HERMINIO PÉREZ MERLIN',
         ]);

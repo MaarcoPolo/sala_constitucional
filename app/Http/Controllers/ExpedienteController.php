@@ -156,4 +156,44 @@ class ExpedienteController extends Controller
         }
 
     }
+    public function consultaExp(Request $request){
+        try{
+            if($request->fecha_fin != null){
+                $consultas = Expediente::whereBetween('fecha',[$request->fecha_inicio, $request->fecha_fin])->get();
+            }else{
+                $consultas = Expediente::whereDate('fecha',$request->fecha_inicio)->get();
+            }
+            $array_consultas = array();
+            $cont = 1;
+            foreach($consultas as $consulta){
+                $objectConsulta = new \stdClass();
+                $objectConsulta->id = $consulta->id;
+                $objectConsulta->expediente = $consulta->expediente; 
+                $objectConsulta->ayo = $consulta->ayo; 
+                $objectConsulta->fecha = $consulta->fecha; 
+                $objectConsulta->actor = $consulta->actor; 
+                $objectConsulta->demandado = $consulta->demandado; 
+                $objectConsulta->juicio_id = $consulta->juicio_id; 
+                $objectConsulta->ponencia_id = $consulta->ponencia_id; 
+                $objectConsulta->user_id = $consulta->user_id; 
+                $objectConsulta->archivo = Storage::url($consulta->archivo);
+
+                array_push($array_consultas, $objectConsulta);
+                $cont++;
+            }
+            return response()->json([
+                "status" => "ok",
+                "message" => "Consulta de expedientes obtenida con éxito",
+                "consultaExp" => $array_consultas
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "status" => "error",
+                "message" => "Ocurrió un error al obtener los registros de los expedientes",
+                "error" => $th->getMessage(),
+                "location" => $th->getFile(),
+                "line" => $th->getLine(),
+            ], 200);
+        }
+    }
 }

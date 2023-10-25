@@ -23,5 +23,14 @@ class UserSeeder extends Seeder
             'password' => 'password',
             'tipo_usuario_id' => 1,
         ]);
+        DB::table('users')->insert([
+            'nombre' => 'Administrador',
+            'apellido_paterno' => 'Administrador',
+            'apellido_materno' => 'Administrador',
+            'email' => 'Administrador@Administradorpj.gob.mx',
+            'username' => 'administrador',
+            'password' => 'password',
+            'tipo_usuario_id' => 2,
+        ]);
     }
 }

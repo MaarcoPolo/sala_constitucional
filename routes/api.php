@@ -57,7 +57,7 @@ Route::group(['middleware' => 'auth:sanctum'], function ($router) {
     //Rutas para funcionalidad de la vista de expediente
     Route::get('/datos', [ExpedienteController::class, 'getDatos']);
     Route::post('/registro-expediente', [ExpedienteController::class, 'guardarExpediente']);
-
+    Route::post('/expedientes-consulta',[ExpedienteController::class, 'consultaExp']);
 
 
 });

@@ -9,9 +9,6 @@ use Illuminate\Support\Str;
 use App\Mail\NotificacionUsuarioNuevo;
 use Mail;
 
-
-
-
 class UserController extends Controller
 {
     public function getUsuarios(Request $request){

@@ -7,6 +7,7 @@ import TipoUsuarios from './pages/catalogos/TipoUsuarios.vue'
 import Ponencias from './pages/catalogos/Ponencias.vue'
 import Juicios from './pages/catalogos/Juicios.vue'
 import RegistroExpediente from './pages/RegistroExpediente.vue'
+import ConsultaExp from './pages/ConsultaExp.vue'
 
 
 const routes = [
@@ -62,7 +63,15 @@ const routes = [
         meta: {
             requiresAuth: true
         }
-    },    
+    }, 
+    {
+        path: '/conulta-expediente',
+        name: 'ConsultaExp',
+        component: ConsultaExp,
+        meta: {
+            requiresAuth: true
+        }
+    },   
 ]
 
 const router = createRouter({

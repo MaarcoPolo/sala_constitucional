@@ -18,6 +18,9 @@ class TipoUsuarioSeeder extends Seeder
             'nombre' => 'Superadministrador',
         ]);
         DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Administrador',
+        ]);
+        DB::table('tipo_usuarios')->insert([
             'nombre' => 'Magistrado Presidente',
         ]);
         DB::table('tipo_usuarios')->insert([

@@ -3,8 +3,8 @@ export default {
         usuarios: [],
         tipoUsuarios: [],
         ponencias:[],
-        juicios:[]
-
+        juicios:[],
+        consultaExp:[]
     },
     getters: {
         getUsuarios(state) {
@@ -18,6 +18,9 @@ export default {
         },
         getJuicios(state) {
             return state.juicios
+        },
+        getConsultaExp(state) {
+            return state.consultaExp
         }
     },
     mutations: {
@@ -32,6 +35,9 @@ export default {
         },
         setJuicios(state, payload) {
             state.juicios = payload
+        },
+        setConsultaExp(state, payload) {
+            state.consultaExp = payload
         }
     }
 }

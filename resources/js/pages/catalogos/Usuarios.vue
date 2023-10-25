@@ -401,7 +401,6 @@
                 numShown: 5,
                 current: 1,
                 buscar: '',
-                email_1:''
             }
         },
         setup() {
@@ -596,7 +595,7 @@
                 this.usuario.email =''
                 this.usuario.username = ''
                 this.usuario.password = ''
-                this.email_1 = ''
+                this.usuario.tipo_usuario_id = ''
             },
             abrirModalEditarUsuario(usuario){
                 this.dialogEditarUsuario=true 
@@ -607,7 +606,7 @@
                 this.usuario.email = usuario.email
                 this.usuario.username = usuario.username
                 this.usuario.tipo_usuario_id = usuario.tipo_usuario_id
-                this.usuario.password = usuario.password
+                this.usuario.ponencia_id = usuario.ponencia_id
             },
             async guardarNuevoUsuario() {
                 const isFormCorrect = await this.v$.usuario.$validate()              

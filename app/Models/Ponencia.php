@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Ponencia extends Model
 {
     use HasFactory;
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+    public function expedientes()
+    {
+        return $this->hasMany(Expediente::class);
+    }
 }

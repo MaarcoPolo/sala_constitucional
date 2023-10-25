@@ -30,6 +30,7 @@ class UserController extends Controller
                 $objectUsuario->email = $usuario->email;
                 $objectUsuario->tipo_usuario_id = $usuario->tipo_usuario_id;
                 $objectUsuario->tipo_usuario = $usuario->tipoUsuario->nombre;
+                $objectUsuario->ponencia_id = $usuario->ponencia_id;
                 $objectUsuario->password = $usuario->password;
 
                 array_push($array_usuarios, $objectUsuario);
@@ -75,6 +76,7 @@ class UserController extends Controller
                 $usuario->username = $request->username;
                 $usuario->password = $pass;
                 $usuario->tipo_usuario_id = $request->tipo_usuario_id;
+                $usuario->ponencia_id = $request->ponencia_id;
                 $usuario->save();
 
                 $usuarios = User::where('status', 1)->where('tipo_usuario_id','!=', 1)->get();
@@ -93,6 +95,7 @@ class UserController extends Controller
                     $objectUsuario->email = $usuario->email;
                     $objectUsuario->tipo_usuario_id = $usuario->tipo_usuario_id;
                     $objectUsuario->tipo_usuario = $usuario->tipoUsuario->nombre;
+                    $objectUsuario->ponencia_id = $usuario->ponencia_id;
                     $objectUsuario->password = $usuario->password;                    
                     array_push($array_usuarios, $objectUsuario);
                     $cont++;
@@ -138,7 +141,7 @@ class UserController extends Controller
             $usuario->username = $request->username;
             $usuario->password = $request->password;            
             $usuario->tipo_usuario_id = $request->tipo_usuario_id;
-
+            $usuario->ponencia_id = $request->ponencia_id;
             $usuario->save();
 
             $usuarios = User::where('status', 1)->where('tipo_usuario_id','!=', 1)->get();
@@ -159,6 +162,7 @@ class UserController extends Controller
                 $objectUsuario->nom_cede = $usuario->cede?->nombre;
                 $objectUsuario->tipo_usuario_id = $usuario->tipo_usuario_id;
                 $objectUsuario->tipo_usuario = $usuario->tipoUsuario->nombre;
+                $objectUsuario->ponencia_id = $usuario->ponencia_id;
                 $objectUsuario->password = $usuario->password;
         
                 array_push($array_usuarios, $objectUsuario);
@@ -217,6 +221,7 @@ class UserController extends Controller
                 $objectUsuario->nom_cede = $usuario->cede?->nombre;
                 $objectUsuario->tipo_usuario_id = $usuario->tipo_usuario_id;
                 $objectUsuario->tipo_usuario = $usuario->tipoUsuario->nombre;
+                $objectUsuario->ponencia_id = $usuario->ponencia_id;
                 $objectUsuario->password = $usuario->password;
                 
                 array_push($array_usuarios, $objectUsuario);

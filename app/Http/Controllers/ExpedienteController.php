@@ -174,7 +174,9 @@ class ExpedienteController extends Controller
                 $objectConsulta->actor = $consulta->actor; 
                 $objectConsulta->demandado = $consulta->demandado; 
                 $objectConsulta->juicio_id = $consulta->juicio_id; 
+                $objectConsulta->juicio = $consulta->juicio->nombre;
                 $objectConsulta->ponencia_id = $consulta->ponencia_id; 
+                $objectConsulta->ponencia = $consulta->ponencia->nombre;
                 $objectConsulta->user_id = $consulta->user_id; 
                 $objectConsulta->archivo = Storage::url($consulta->archivo);
 

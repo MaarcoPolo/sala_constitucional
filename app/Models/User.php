@@ -42,10 +42,18 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        // 'password' => 'hashed',
     ];
     public function tipoUsuario()
     {
         return $this->belongsTo(TipoUsuario::class);
+    }
+    public function ponencia()
+    {
+        return $this->belongsTo(Ponencia::class);
+    }
+    public function expedientes()
+    {
+        return $this->hasMany(Expediente::class);
     }
 }

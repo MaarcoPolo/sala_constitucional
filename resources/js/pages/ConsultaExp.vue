@@ -3,12 +3,12 @@
         <div class="row justify-content-center mt-12">
             <div class="card-titulo-page mt-2">
                 <img class="icono-page" src="../../../public/icons/estadistica.png" alt="">
-                <p>Consulta de expedientes Sala Constitucional</p>
+                <p>Consulta de expedientes de Sala Constitucional</p>
             </div>
         </div>
-        <div class="container">
-            <div class="row justify-content-between mt-4">
-                <div class="col-md-6 col-12 principal-div-custom-select mt-4">
+        <div class="container-fluid">
+            <div class="row justify-content-center mt-8">
+                <div class="col-md-4 col-12 principal-div-custom-select mt-4">
                     <div class="first-div-custom-select">
                         <img src="../../../public/icons/calendar.png" alt="">
                     </div>
@@ -16,7 +16,7 @@
                         <input v-model="consulta.fecha_inicio" placeholder="SELECCIONE LA FECHA INICIAL" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control minimal custom-input">                        
                     </div>
                 </div>
-                <div class="col-md-6 col-12 principal-div-custom-select mt-4">
+                <div class="col-md-4 col-12 principal-div-custom-select mt-4">
                     <div class="first-div-custom-select">
                         <img src="../../../public/icons/calendar.png" alt="">
                     </div>
@@ -25,11 +25,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-between mt-4">
-                <div class="col-md-3 col-12"></div>
-                <div class="row justify-content-between">
+            <div class="row justify-content-center mt-6">
+                <div class="col-md-7 col-12"></div>
+                <div class="row justify-content-center">
                         <div class="col-md-6 col-12">
-                                <v-btn
+                                <!-- <v-btn
                                     :loading="loading2"
                                     class="custom-button"
                                     block
@@ -37,9 +37,9 @@
                                     @click="exportarReporteDVAC()" 
                                     >
                                     Exportar a Excel
-                                </v-btn>
+                                </v-btn> -->
                         </div>
-                        <div class="col-md-6 col-12 div-custom-button-filter-normal">
+                        <div class="col-md-10 col-12 div-custom-button-filter-normal">
                             <v-btn
                                 class="custom-button"
                                 block
@@ -53,7 +53,9 @@
             </div>
         </div>
             <!-- INICIO BOTON NUEVO Y BUSCADOR -->
-            <div class="row justify-content-between mt-8">
+        </div>
+            <div class="container mt-4">
+                <div class="row justify-content-between mt-8">
                 <div class="col-md-3 col-12"></div>
                 <div class="col-md-5 col-12"></div>
                 <div class="col-md-4 col-12">
@@ -67,20 +69,19 @@
                     </div>
                 </div>
             </div>
-        </div>
-            <div class="my-2 mb-12 py-6">
-                <div class="">
-                    <div class="row justify-content-between">
+                <div class="mt-6">
+                    <div class="row justify-content-center">
                         <table class="table custom-border-table">
                             <thead class="headers-table">
                                 <tr>
-                                    <th class="custom-title-table-direc text-uppercase">Número de expediente</th>
-                                    <th class="custom-title-table-direc text-uppercase">Año</th>
-                                    <th class="custom-title-table-direc text-uppercase">Fecha</th>
-                                    <th class="custom-title-table-direc text-uppercase">Actor</th>
-                                    <th class="custom-title-table-direc text-uppercase">Demandado</th>
-                                    <th class="custom-title-table-direc text-uppercase">Juicio</th>
-                                    <th class="custom-title-table-direc text-uppercase">Acciones</th>
+                                    <th class="custom-title-table text-uppercase">Exp.</th>
+                                    <th class="custom-title-table text-uppercase">Año</th>
+                                    <th class="custom-title-table text-uppercase">Fecha</th>
+                                    <th class="custom-title-table text-uppercase">Actor</th>
+                                    <th class="custom-title-table text-uppercase">Demandado</th>
+                                    <th class="custom-title-table text-uppercase">Juicio</th>
+                                    <th class="custom-title-table text-uppercase">Ponencia</th>
+                                    <!-- <th class="custom-title-table text-uppercase">Acciones</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,13 +94,14 @@
                                     </th>
                                 </tr>
                                 <tr v-else v-for="consultaExp in datosPaginados" :key="consultaExp.id">
-                                    <td class="custom-data-table-direc text-uppercase">{{consultaExp.expediente}}</td> 
-                                    <td class="custom-data-table-direc text-uppercase">{{consultaExp.ayo}}</td> 
-                                    <td class="custom-data-table-direc text-uppercase">{{consultaExp.fecha}}</td> 
-                                    <td class="custom-data-table-direc text-uppercase">{{consultaExp.actor}}</td> 
-                                    <td class="custom-data-table-direc text-uppercase">{{consultaExp.demandado}}</td>                                    
-                                    <td class="custom-data-table-direc text-uppercase">{{consultaExp.juicio}}</td> 
-                                    <td class="custom-data-table">
+                                    <td class="custom-data-table text-uppercase text-center">{{consultaExp.expediente}}</td> 
+                                    <td class="custom-data-table text-uppercase text-center">{{consultaExp.ayo}}</td> 
+                                    <td class="custom-data-table text-uppercase text-center">{{consultaExp.fecha}}</td> 
+                                    <td class="custom-data-table text-uppercase text-center">{{consultaExp.actor}}</td> 
+                                    <td class="custom-data-table text-uppercase text-center">{{consultaExp.demandado}}</td>                                    
+                                    <td class="custom-data-table text-uppercase text-center">{{consultaExp.juicio}}</td> 
+                                    <td class="custom-data-table text-uppercase text-center">{{consultaExp.ponencia}}</td> 
+                                    <!-- <td class="custom-data-table">
                                         <div class="text-center row justify-content-center">
                                             <div>
                                                 <v-icon
@@ -117,7 +119,7 @@
                                                 </v-tooltip>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </table>

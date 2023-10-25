@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'username' => 'superadmin',
             'password' => 'password',
             'tipo_usuario_id' => 1,
+            'ponencia_id' => 1
         ]);
         DB::table('users')->insert([
             'nombre' => 'Administrador',
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
             'username' => 'administrador',
             'password' => 'password',
             'tipo_usuario_id' => 2,
+            'ponencia_id' => 1
         ]);
     }
 }

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('actor');
             $table->string('demandado');
             $table->string('archivo')->nullable();
-            $table->integer('juicio_id');
-            $table->integer('ponencia_id');
-            $table->integer('user_id');
+            $table->foreignId('juicio_id')->constrained();
+            $table->foreignId('ponencia_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

@@ -17,15 +17,6 @@
             <div class="custom-navbar">
                 <ul class="custom-ul-navbar m-0">
                     <li :class="currentRoute == 'Home' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @click="irInicio()">Inicio</li>
-                    <li :class="currentRoute == 'Usuarios' || currentRoute == 'Ponencias' || currentRoute == 'TipoUsuarios' || currentRoute == 'Juicios' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverCatalogos()" @mouseleave="mouseLeaveCatalogos()">
-                        Catálogos
-                        <div class="custom-dropdown-menu dropdown-menu-catalogos" v-if="bandCatalogos" >
-                            <a class="custom-dropdown-item" :class="currentRoute == 'Usuarios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irUsuarios()">Usuarios</a>
-                            <a class="custom-dropdown-item" :class="currentRoute == 'TipoUsuarios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irTipoUsuarios()">Tipo Usuarios</a>
-                            <a class="custom-dropdown-item" :class="currentRoute == 'Ponencias' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irPonencias()">Ponencias</a>
-                            <a class="custom-dropdown-item" :class="currentRoute == 'Juicios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irJuicios()">Juicios</a>
-                        </div>
-                    </li>
                     <li :class="currentRoute == 'RegistroExpediente' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverRegistro()" @mouseleave="mouseLeaveRegistro()">
                         Registro
                         <div class="custom-dropdown-menu dropdown-menu-catalogos" v-if="bandRegistro" >
@@ -34,6 +25,18 @@
                     </li>
                     <li :class="currentRoute == 'Consulta' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverConsulta()" @mouseleave="mouseLeaveConsulta()">
                         Consultar
+                        <div class="custom-dropdown-menu dropdown-menu-catalogos" v-if="bandConsulta" >
+                            <a class="custom-dropdown-item" :class="currentRoute == 'ConsultaExp' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irConsultaExp()">Consulta de expediente</a>
+                        </div>
+                    </li>
+                    <li :class="currentRoute == 'Usuarios' || currentRoute == 'Ponencias' || currentRoute == 'TipoUsuarios' || currentRoute == 'Juicios' ? 'custom-navbar-option-selected' : 'custom-navbar-option-unselected'" @mouseover="mouseOverCatalogos()" @mouseleave="mouseLeaveCatalogos()">
+                        Catálogos
+                        <div class="custom-dropdown-menu dropdown-menu-catalogos" v-if="bandCatalogos" >
+                            <a class="custom-dropdown-item" :class="currentRoute == 'Usuarios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irUsuarios()">Usuarios</a>
+                            <a class="custom-dropdown-item" :class="currentRoute == 'TipoUsuarios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irTipoUsuarios()">Tipo Usuarios</a>
+                            <a class="custom-dropdown-item" :class="currentRoute == 'Ponencias' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irPonencias()">Ponencias</a>
+                            <a class="custom-dropdown-item" :class="currentRoute == 'Juicios' ? 'custom-dropdown-item-selected' : 'custom-dropdown-item-unselected'" @click="irJuicios()">Juicios</a>
+                        </div>
                     </li>
                     <li @click="logout()">Cerrar Sesión</li>
                 </ul>           
@@ -112,6 +115,9 @@
             },
             irRegistroExpediente(){
                 this.$router.push('/registro-expediente')
+            },
+            irConsultaExp(){
+                this.$router.push('/consulta-expediente')
             },
             mouseOverCatalogos() {
                 this.bandCatalogos = true

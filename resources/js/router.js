@@ -65,7 +65,7 @@ const routes = [
         }
     }, 
     {
-        path: '/conulta-expediente',
+        path: '/consulta-expediente',
         name: 'ConsultaExp',
         component: ConsultaExp,
         meta: {

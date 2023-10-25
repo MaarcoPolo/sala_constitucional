@@ -6,8 +6,8 @@
                     <img class="icono-page" src="../../../public/icons/alta_expediente.png" alt="">
                     <p>Alta de Expediente</p>
                 </div>
-             </div>
-             <div class="container mt-16">
+            </div>
+            <div class="container mt-16">
                 <div class="row justify-content-between mt-8">
                     <div class="col-md-4 col-12">
                     <v-text-field
@@ -15,8 +15,8 @@
                         label="Expediente"
                         placeholder="Expediente"
                         variant="solo-filled"
-                        clearable
-                       ></v-text-field>
+                        disabled
+                    ></v-text-field>
                     </div>
                     <div class="col-md-4 col-12">
                         <v-text-field
@@ -24,7 +24,7 @@
                         label="Año"
                         placeholder="Año"
                         variant="solo-filled"
-                        clearable
+                        disabled
                         ></v-text-field>
                     </div>
                     <div class="col-md-4 col-12">
@@ -33,8 +33,8 @@
                             label="Fecha"
                             placeholder="Fecha"
                             variant="solo-filled"
-                            clearable
                             type="date"
+                            disabled
                         ></v-text-field>
                     </div>
                 </div>
@@ -63,7 +63,10 @@
                     <v-autocomplete
                         variant="outlined"
                         label="Juicio para asignar"
-                        :items="['Acción de Tutela', 'Acciones de Inconstitucionalidad', 'Controversias Competenciales', 'Acción por Omisión Legislativa', 'Consulta interpretación de la Ley Orgánica del Poder Judicial del Estado de Puebla', 'Recurso de Revocación','Recurso de Revisión']"
+                        :items="juicios"
+                        item-title="nombre"
+                        item-value="id"
+                        v-model="dato.juicio_id"
                     ></v-autocomplete>
                     </div>
                 </div>
@@ -78,34 +81,23 @@
                         </v-file-input>
                     </div>
                 </div>
-             </div>
-             <div class="row justify-content-between  mb-4 mt-7">
-                
-                            <div class="col-md-2"></div>
-                            <div class="col-md-2 mt-6 mb-4">
-                                <v-btn
-                                class="custom-button mr-2"
-                                color="#c4f45d"
-                                @click="guardarNuevaPonencia()"
-                                >
-                                Guardar
-                                </v-btn>
-                            </div>
-                            <div class="col-md-2 mt-6">
-                                <v-btn
-                                class="custom-button ml-2"
-                                color="#6a73a0"
-                                @click="cerrarModalNuevaPonencia()"
-                                >
-                                Cancelar
-                            </v-btn>
-                            </div>
-                            <div class="col-md-2"></div>
-                        </div>
+            </div>
+            <div class="row justify-content-between  mb-4 mt-7">
+                <div class="col-md-3"></div>
+                <div class="col-md-2 mt-6 mb-4">
+                    <v-btn
+                    class="custom-button mr-2"
+                    color="#c4f45d"
+                    @click="guardarNuevoRegistro()"
+                    >
+                    Guardar
+                    </v-btn>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
         </v-card>
     </v-container>
 </template>
-
 <script>
     import { defineComponent } from "vue";
     import { errorSweetAlert, successSweetAlert } from "../helpers/sweetAlertGlobals";
@@ -121,7 +113,8 @@
                     actor:'',
                     demandado:'',
                     archivo:'',
-                    juicio_id:''
+                    juicio_id: null,
+                    // ponencia_id:null
                 },
             }
         },
@@ -158,6 +151,8 @@
                 this.loading = false
             },
             async guardarNuevoRegistro() {
+                console.log(this.dato)
+
                 Swal.fire({
                     title: '¿Guardar nuevo registro?',
                     icon: 'question',
@@ -170,7 +165,11 @@
                     preConfirm: async () => {
                         try {
                                 this.loading = true
-                                let response = await axios.post('/api/registro-expediente', this.dato,)
+                                let response = await axios.post('/api/registro-expediente', this.dato,{
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data',
+                                    }
+                            })
                                 return response
                             } catch (error) {
                                 errorSweetAlert('Ocurrió un error al guardar el registro.')
@@ -184,7 +183,7 @@
                                 successSweetAlert(result.value.data.message)
                                 this.loading = false
                                 this.LimpiarFormulario()
-                                this.getNumerosConsecutivos()
+                                this.getDatos()
                             }else {
                                 errorSweetAlert(`${result.value.data.message}<br>Error: ${result.value.data.error}<br>Location: ${result.value.data.location}<br>Line: ${result.value.data.line}`)
                             }

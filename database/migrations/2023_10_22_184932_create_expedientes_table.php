@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->string('actor');
             $table->string('demandado');
-            $table->string('archivo');
+            $table->string('archivo')->nullable();
             $table->integer('juicio_id');
             $table->integer('ponencia_id');
             $table->integer('user_id');
